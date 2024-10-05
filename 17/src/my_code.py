@@ -69,8 +69,65 @@ def input_int(msg):
 #Write your functions here!
 
 
+###### ALL CODES HERE WORK. YOU JUST NEED TO UNDERSTAND AND FIX A SITUATION WHERE YOU HAVE TO AVOID ERROR FOR INVALID INPUTS #######
 
 if __name__ == "__main__":
     #Write main program below this line
+    
+    def ask_grades():
+      Name_and_grade = {}
+      while True:
+        Name = input("Name: ")
+        if Name == "End":
+            break
+        else:
+          grade = input("Grade: ")
+          if grade == 0 or grade < 0:
+              grade = 0
+          elif grade == 5 or grade > 5:
+              grade = 5
+          else:
+              grade = grade       
+          
+          Name_and_grade[Name] = grade
+      return Name_and_grade
+
+    # print(ask_grades())
+
+############## GETTING FAILED GRADES AND STUDENT
+
+    def print_failed(grades):
+        failed_students = []
+        scores = []
+        for key, value in grades.items():
+            if value == 0:
+                failed_students.append(key)
+                scores.append(value)
+
+        failed_result = []
+        for failed_student, score in zip(failed_students, scores):
+          failed_result.append(f"{failed_student} {score}")
+        
+        return '\n'.join(failed_result)
 
         
+
+
+    
+    # print(print_failed(grades=ask_grades()))
+
+    def failed_count(grades):
+        count = 0
+        for key, value in grades.items():
+            if value == 0:
+                count+=1
+        return f"There are {count}  failed students."
+    
+
+    # print(failed_count(ask_grades()))
+
+    def print_grades(grades):
+        for name, value in grades.items():
+            print(f"{name} {value}")
+    
+    print_grades(ask_grades())

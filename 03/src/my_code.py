@@ -23,7 +23,10 @@ Product:    10 * 5 = 50
 
 first_value = int(input("Give 1st number: "))
 second_value = int(input("Give 2nd number: "))
-print ("Sum: " + str(first_value + second_value))
-print ("Difference: " + str(first_value - second_value))
-print ("Product: " + str(first_value * second_value))
+print (f"Sum:         {first_value} + {second_value} = {first_value + second_value}")
+print (f"Difference:  {first_value} - {second_value} = {first_value - second_value}")
+print (f"Product:     {first_value} * {second_value} = {first_value * second_value}")
+
+
+
 

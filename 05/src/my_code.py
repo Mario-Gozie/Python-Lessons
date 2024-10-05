@@ -16,6 +16,6 @@ Area is 113.10
 """
 
 pi = 3.141593
-diameter = int(input(f"Give diameter: "))
-print(f"Circumference is {round(2*pi*(diameter/2),2)}")
-print(f"Circumference is {round(pi*(diameter/2)**2,2)}")
+diameter = int(input("Give diameter: "))
+print(f"Circumreference is {2 * pi * (diameter / 2):.2f}")
+print(f"Area is {pi * (diameter / 2) ** 2:.2f}")
