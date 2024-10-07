@@ -37,9 +37,9 @@ Thursday 4.2 mm
 Friday 4.8 mm
 """
 
-Finnish = ["maanantai", "tiistai", "keskiviikko", "torstai", "perjantai", "lauantai", "sunnuntai"]
+Finnish = ["Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai"]
 
-English = ["Monday","Tuesday","wednesday","Thursday","Friday", "Saturday", "Sunday"]
+English = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
 
 temp_values = {}
 
@@ -47,12 +47,12 @@ language = input("Please choose language (0 = suomi, 1 = english): ")
 
 if language == "1":
   for days in English:
-    for i in range(5):  #This loop will loop through numbers between 1 to 5 which is from 1 to 4. five is not included
+    for i in range(1,5):  #This loop will loop through numbers between 1 to 5 which is from 1 to 4. five is not included
       temp_values[f"{days} {i}"] = float(input(f"{days} {i}: ")) #Now, it will produce each day 4 times and number 1 to 4 by it's side.
       
 else:
   for days in Finnish:
-    for i in range(5):  #This loop will loop through numbers between 1 to 5 which is from 1 to 4. five is not included
+    for i in range(1,5):  #This loop will loop through numbers between 1 to 5 which is from 1 to 4. five is not included
       temp_values[f"{days} {i}"] = float(input(f"{days} {i}: ")) #Now, it will produce each day 4 times and number 1 to 4 by it's side.
 
 grouped_days = {}  # dictionary that will carry average values for the week 
@@ -62,6 +62,8 @@ for key, value in temp_values.items(): ## iterating the original dictionary to c
   if day not in grouped_days:
     grouped_days[day] = [] #Here I am creating a key for each day within the dictionary that will carry average values for the week
   grouped_days.setdefault(day,[]).append(value) # To append to a list, you need to set the key of the dictionary to a default of list.
+
+# print(grouped_days)
 
 for key, value in grouped_days.items():
   print(f'{key} {(sum(value)/len(value)):.1f} mm')

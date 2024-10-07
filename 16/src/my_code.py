@@ -33,35 +33,37 @@ Give an integer: -100
 Negative
 """
 
-#Implement AskAndTest function here!
+######   Implement AskAndTest function here!
+def AskAndTest():
+   integer = int(input('Give an integer:  '))
+   if integer < 0:
+      return -1
+      
+   elif integer > 0:
+      return 1
+      
+   elif integer == 0:
+      return 0
+      
+#####  A FUNCTION THAT PRINTS EVALUATION RESULT.
+
+def message(x = AskAndTest()):
+   if x == 1:
+      print('Positive')
+   elif x == -1:
+      print('Negative')
+   elif x == 0:
+      print("Zero")
+
+
 
 
 
 if __name__ == "__main__":
     #Write main program below this line
-
-   def AskAndTest():
-      integer = int(input('Give an integer:  '))
-      if integer < 0:
-         return -1
-         
-      elif integer > 0:
-         return 1
-         
-      elif integer == 0:
-         return 0
-         
-
-
-   def message(x = AskAndTest()):
-      if x == 1:
-         print('Positive')
-      elif x == -1:
-         print('Negative')
-      elif x == 0:
-         print("Zero")
-
-
+   
    message()
+
+
 
 
