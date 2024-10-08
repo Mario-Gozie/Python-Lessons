@@ -47,7 +47,8 @@ def AskAndTest():
       
 #####  A FUNCTION THAT PRINTS EVALUATION RESULT.
 
-def message(x = AskAndTest()):
+def message():
+   x = AskAndTest()
    if x == 1:
       print('Positive')
    elif x == -1:
