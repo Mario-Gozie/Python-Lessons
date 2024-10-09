@@ -92,17 +92,13 @@ def failed_count(grades):
             count+=1
     return f"There are {count}  failed students."
 
-########################  FUNTION TO PRINT ALL STUDENTS    ##############################
-
-
-def print_grades(grades):
-    print(grades)
+################   FUNCTION FOR NAME AND GRADE COLLECTION    ######################
 
 def ask_grades():
     Name_and_grade = {}
     while True:
         Name = input("Name: ")
-        if Name == "End":
+        if Name == "END":
             break
         else:
             grade = input_int("Grade: ")
@@ -115,7 +111,16 @@ def ask_grades():
             Name_and_grade[Name] = grade
     return Name_and_grade
 
-print(ask_grades())
+########################  FUNTION TO PRINT ALL STUDENTS    ##############################
+
+
+def print_grades(grades):
+    for Names, Grades in grades.items():
+        if grades == 0:
+            return failed_count(grades), print_failed(grades)
+        else:
+            return f"{Names} {Grades}"
+
 
 
 # def ask_grades():
@@ -182,7 +187,7 @@ print(ask_grades())
 ###### ALL CODES HERE WORK. YOU JUST NEED TO UNDERSTAND AND FIX A SITUATION WHERE YOU HAVE TO AVOID ERROR FOR INVALID INPUTS #######
 
 if __name__ == "__main__":
-    print("money")
+    print_grades(ask_grades())
     #Write main program below this line
     
 #     def ask_grades():
