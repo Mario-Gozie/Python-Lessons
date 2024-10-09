@@ -113,14 +113,30 @@ def ask_grades():
 
 ########################  FUNTION TO PRINT ALL STUDENTS    ##############################
 
-
 def print_grades(grades):
-    for Names, Grades in grades.items():
-        if grades == 0:
-            return failed_count(grades), print_failed(grades)
-        else:
-            return f"{Names} {Grades}"
+        # Check for failed students and print the count and list of failed students
+    if failed_count(grades) != "There are 0 failed students.":
+        print(failed_count(grades))
+        print(print_failed(grades))
 
+
+    # Print all students with their grades
+    for Names, Grades in grades.items():
+        print(f"{Names} {Grades}")
+    
+
+
+
+
+
+# def print_grades(grades):
+#     for Names, Grades in grades.items():
+#         if grades == 0:
+#             print(failed_count(grades),print_failed(grades))
+#         else:
+#             print(f"{Names} {Grades}")
+        
+print_grades(ask_grades())
 
 
 # def ask_grades():
