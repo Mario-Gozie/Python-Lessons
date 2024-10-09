@@ -67,6 +67,7 @@ def input_int(msg):
 
 #Write your functions here!
 
+################ FUNCTION FOR A LIST OF FAILED STUDENTS   ##################
 
 def print_failed(grades):
     failed_students = []
@@ -82,12 +83,17 @@ def print_failed(grades):
     
     return '\n'.join(failed_result)
 
+#######################  FUNCTION FOR COUNTING NUMBER OF FAILED STUDENTS    #######################
+
 def failed_count(grades):
     count = 0
     for key, value in grades.items():
         if value == 0:
             count+=1
     return f"There are {count}  failed students."
+
+########################  FUNTION TO PRINT ALL STUDENTS    ##############################
+
 
 def print_grades(grades):
     print(grades)
@@ -100,6 +106,12 @@ def ask_grades():
             break
         else:
             grade = input_int("Grade: ")
+            if grade < 0:
+                grade = 0
+            elif grade > 5:
+                grade = 5
+            else:
+                grade = grade
             Name_and_grade[Name] = grade
     return Name_and_grade
 
