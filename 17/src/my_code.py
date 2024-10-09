@@ -67,6 +67,31 @@ def input_int(msg):
 
 #Write your functions here!
 
+
+def print_failed(grades):
+    failed_students = []
+    scores = []
+    for key, value in grades.items():
+        if value == 0:
+            failed_students.append(key)
+            scores.append(value)
+
+    failed_result = []
+    for failed_student, score in zip(failed_students, scores):
+        failed_result.append(f"{failed_student} {score}")
+    
+    return '\n'.join(failed_result)
+
+def failed_count(grades):
+    count = 0
+    for key, value in grades.items():
+        if value == 0:
+            count+=1
+    return f"There are {count}  failed students."
+
+def print_grades(grades):
+    print(grades)
+
 def ask_grades():
     Name_and_grade = {}
     while True:
@@ -74,8 +99,7 @@ def ask_grades():
         if Name == "End":
             break
         else:
-            given_grade = input("Grade: ")
-            grade = input_int(given_grade)
+            grade = input_int("Grade: ")
             Name_and_grade[Name] = grade
     return Name_and_grade
 
