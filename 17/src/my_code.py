@@ -89,8 +89,17 @@ def failed_count(grades):
     count = 0
     for key, value in grades.items():
         if value == 0:
-            count+=1
-    return f"There are {count}  failed students."
+            count += 1
+    return count
+
+
+
+# def failed_count(grades):
+#     count = 0
+#     for key, value in grades.items():
+#         if value == 0:
+#             count+=1
+#     return f"There are {count}  failed students."
 
 ################   FUNCTION FOR NAME AND GRADE COLLECTION    ######################
 
@@ -114,15 +123,30 @@ def ask_grades():
 ########################  FUNTION TO PRINT ALL STUDENTS    ##############################
 
 def print_grades(grades):
-        # Check for failed students and print the count and list of failed students
-    if failed_count(grades) != "There are 0 failed students.":
-        print(failed_count(grades))
+    # Get the count of failed students
+    failed_students_count = failed_count(grades)
+    
+    if failed_students_count > 0:
+        print(f"There are {failed_students_count}  failed students.")
         print(print_failed(grades))
+    
+    else:
+        # Print all students with their grades
+        for Names, Grades in grades.items():
+            print(f"{Names} {Grades}")
 
+print_grades(ask_grades())
 
-    # Print all students with their grades
-    for Names, Grades in grades.items():
-        print(f"{Names} {Grades}")
+# def print_grades(grades):
+#         # Check for failed students and print the count and list of failed students
+#     if failed_count(grades) != "There are 0 failed students.":
+#         print(failed_count(grades))
+#         print(print_failed(grades))
+
+#     else:
+#         # Print all students with their grades
+#         for Names, Grades in grades.items():
+#             print(f"{Names} {Grades}")
     
 
 
@@ -136,7 +160,7 @@ def print_grades(grades):
 #         else:
 #             print(f"{Names} {Grades}")
         
-print_grades(ask_grades())
+
 
 
 # def ask_grades():
