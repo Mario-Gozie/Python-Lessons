@@ -107,7 +107,7 @@ def ask_grades():
     Name_and_grade = {}
     while True:
         Name = input("Name: ")
-        if Name == "END":
+        if Name.upper() == "END":
             break
         else:
             grade = input_int("Grade: ")
@@ -127,15 +127,23 @@ def print_grades(grades):
     failed_students_count = failed_count(grades)
     
     if failed_students_count > 0:
-        print(f"There are {failed_students_count}  failed students.")
-        print(print_failed(grades))
+        
+        return f"There are {failed_students_count} failed students.\n{print_failed(grades)}"
+
+        # print(f"There are {failed_students_count}  failed students.") 
+        # print(print_failed(grades))
     
     else:
         # Print all students with their grades
         for Names, Grades in grades.items():
-            print(f"{Names} {Grades}")
+            return f"{Names} {Grades}"
+           
 
-print_grades(ask_grades())
+grades = print_grades(ask_grades())
+
+
+
+
 
 # def print_grades(grades):
 #         # Check for failed students and print the count and list of failed students
@@ -227,7 +235,8 @@ print_grades(ask_grades())
 ###### ALL CODES HERE WORK. YOU JUST NEED TO UNDERSTAND AND FIX A SITUATION WHERE YOU HAVE TO AVOID ERROR FOR INVALID INPUTS #######
 
 if __name__ == "__main__":
-    print_grades(ask_grades())
+    print(grades)
+    # print_grades(ask_grades())
     #Write main program below this line
     
 #     def ask_grades():

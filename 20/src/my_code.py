@@ -58,6 +58,10 @@ AAA-111 12.03.1928
 """
 #Write functions, define global variables, and import modules here!
 
+def ask_car():
+   Registeration_number = input("Registeration number: ")
+   Registeration_date = input("Registeration date: ")   
+
 if __name__ == "__main__":
     #Write main program below this line
 
