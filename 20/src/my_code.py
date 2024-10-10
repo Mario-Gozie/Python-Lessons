@@ -58,13 +58,32 @@ AAA-111 12.03.1928
 """
 #Write functions, define global variables, and import modules here!
 
+car_reg_dict = {}
+
+
 def ask_car():
-   Registeration_number = input("Registeration number: ")
-   Registeration_date = input("Registeration date: ")   
+   while True:
+      Registeration_number = input("Registeration number: ")
+   
+      if Registeration_number == "END":
+         break
+      else:
+         Registeration_date = input("Registeration date: ")
+         try:
+            user_date = datetime.strptime(user_input, "%Y-%m-%d")
+            print("The date you entered is:", user_date)
+         except ValueError:
+            print("Invalid date format. Please enter the date in 'YYYY-MM-DD' format.")
+   car_reg_dict["Registeration No"] = Registeration_date
+   return car_reg_dict
+
+
+
+
 
 if __name__ == "__main__":
     #Write main program below this line
 
-    
+   print(ask_car())    
 
 
