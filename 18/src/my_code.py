@@ -44,27 +44,43 @@ Judge 5: 20
 """
 #Write functions and define global variables here!
 
+######################## LENGTH FUNCTION    #############################
+
 def ask_jump_length():
     return float(input("Length: "))
 
+length = ask_jump_length()
 
+#################### ASKING FOR STYLE POINTS #########################
 
 def ask_style_points():
     style_point_list = []
     for i in range(1,6):
         style_point_list.append(float(input(f"Judge {i}: "))) ## APPENDING AND RETURNING VALUES COLLECTED TO STYLE POINT LIST
     return style_point_list
-        
+
+style_points = ask_style_points()
+######################  K POINT VARIABLE     ########################################
+
+K_point = 90
+
+
+########################## COMPUTATION FUNCTION     #################################
+
 def compute_total_ski_comp(length, style_list):
-    Total_style_points = 0
+    style_points = 0
+
     for x in style_list:
-        if x != max(style_list) | x != min(style_list):
-            Total_style_points += x
-        
+        if x != max(style_list) and x != min(style_list):
+            style_points += x
+    
+    total_points = (length - K_point) * 1.8 + 60 + style_points
+            
+    print(length, total_points)   
             
 
     
 if __name__ == "__main__":
     #Write main program below this line
 
-    print(ask_style_points())    
+    compute_total_ski_comp(length,style_points)    
