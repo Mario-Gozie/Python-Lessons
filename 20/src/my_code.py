@@ -77,12 +77,15 @@ def ask_car():
             try:
                user_date_time = datetime.strptime(Registeration_date, "%d.%m.%Y")
                user_date = user_date_time.strftime("%d.%m.%Y")
-               car_reg_dict["Registeration No"] = user_date
+               car_reg_dict[Registeration_number] = user_date
                break
             except ValueError:
                print(f'Error: Give date in format dd.mm.yyyy : 12.3.1928')
                pass
    return car_reg_dict         
+
+
+
 
 ###################### FUNCTION FOR WRITING CAR REGISTERATION DETAILS INTO A TEXT FILE
 
@@ -98,6 +101,8 @@ def save_car(dict):
          ### Seperate the values by a tab "\t" and end the line with a new line "\n"
          file.write(f"{RegNo}\t{RegDate}\n")
 
+
+
 ######    FUNCTION FOR GETTING A DICTIONARY OF REGISTERATI0N NUMBER AND DATE FROM A TEXT FILE 
 
 def read_cars():
@@ -105,7 +110,7 @@ def read_cars():
    Car_reg_dict_from_file = {}
 
    # Opening file in read mode. remember that the read staement will close the file after the block code
-   with open("car.txt","r") as file:
+   with open("cars.txt","r") as file:
       for line in file:
          # The Strip removes any leading or trailing whitespace and split by tab (\t)
          parts = line.strip().split("\t")
@@ -113,13 +118,23 @@ def read_cars():
          if len(parts) == 2:
             RegNo, Date = parts
             Car_reg_dict_from_file[RegNo] = Date
+   return Car_reg_dict_from_file
 
 
 
+##### THE FUNCTION THAT PRINTS RESULT AFTER ALL THE ACTION
+
+def print_data(x):
+   save_car(x)
+   car_fr_file = read_cars()
+   print("In addition, the test program created cars.txt file containing:")
+   for reg_no, date in car_fr_file.items():
+      print(f"{reg_no} {date}")
+   
 
 if __name__ == "__main__":
     #Write main program below this line
 
-   print(ask_car())    
+   print_data(ask_car()) 
 
 
