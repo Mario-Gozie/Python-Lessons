@@ -84,16 +84,21 @@ def ask_car():
                pass
    return car_reg_dict         
 
-#### Opening of file called "cars.txt" in append mode "a" instead of write mode "w". which means, I don't want to overwrite the file or create a new one if it does not exist. I just want to add new values to the existing file.
-with open("cars.txt", "a") as file:
-## The with block here helps to close the file automatically when the with block ends.
 
 
-#### Iterating over the dictionary
-   for RegNo, RegDate in car_reg_dict.items():
-      ### writing each registeration number and date to the file.
-      ### Seperate the values by a tab "\t" and end the line with a new line "\n"
-      file.write(f"{RegNo}\t{RegDate}\n")
+def save_car(dict):
+   #### Opening of file called "cars.txt" in append mode "a" instead of write mode "w". which means, I don't want to overwrite the file or create a new one if it does not exist. I just want to add new values to the existing file.
+   with open("cars.txt", "a") as file:
+   ## The with block here helps to close the file automatically when the with block ends.
+
+
+   #### Iterating over the dictionary
+      for RegNo, RegDate in dict.items():
+         ### writing each registeration number and date to the file.
+         ### Seperate the values by a tab "\t" and end the line with a new line "\n"
+         file.write(f"{RegNo}\t{RegDate}\n")
+
+
 
 
 
