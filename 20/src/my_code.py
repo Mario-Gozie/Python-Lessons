@@ -84,7 +84,7 @@ def ask_car():
                pass
    return car_reg_dict         
 
-
+###################### FUNCTION FOR WRITING CAR REGISTERATION DETAILS INTO A TEXT FILE
 
 def save_car(dict):
    #### Opening of file called "cars.txt" in append mode "a" instead of write mode "w". which means, I don't want to overwrite the file or create a new one if it does not exist. I just want to add new values to the existing file.
@@ -98,13 +98,21 @@ def save_car(dict):
          ### Seperate the values by a tab "\t" and end the line with a new line "\n"
          file.write(f"{RegNo}\t{RegDate}\n")
 
+######    FUNCTION FOR GETTING A DICTIONARY OF REGISTERATI0N NUMBER AND DATE FROM A TEXT FILE 
 
 def read_cars():
 
+   Car_reg_dict_from_file = {}
+
+   # Opening file in read mode. remember that the read staement will close the file after the block code
    with open("car.txt","r") as file:
       for line in file:
          # The Strip removes any leading or trailing whitespace and split by tab (\t)
          parts = line.strip().split("\t")
+
+         if len(parts) == 2:
+            RegNo, Date = parts
+            Car_reg_dict_from_file[RegNo] = Date
 
 
 
