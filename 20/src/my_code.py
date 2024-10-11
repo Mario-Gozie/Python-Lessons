@@ -99,6 +99,12 @@ def save_car(dict):
          file.write(f"{RegNo}\t{RegDate}\n")
 
 
+def read_cars():
+
+   with open("car.txt","r") as file:
+      for line in file:
+         # The Strip removes any leading or trailing whitespace and split by tab (\t)
+         parts = line.strip().split("\t")
 
 
 
