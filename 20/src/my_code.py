@@ -75,7 +75,8 @@ def ask_car():
 
                # Convert the user input to a date
             try:
-               user_date = datetime.strptime(Registeration_date, "%d.%m.%Y")
+               user_date_time = datetime.strptime(Registeration_date, "%d.%m.%Y")
+               user_date = user_date_time.strftime("%d.%m.%Y")
                car_reg_dict["Registeration No"] = user_date
                break
             except ValueError:
@@ -84,7 +85,7 @@ def ask_car():
    return car_reg_dict         
 
    
-
+with open("cars.txt")
 
 
 
