@@ -84,8 +84,12 @@ def ask_car():
                pass
    return car_reg_dict         
 
-   
-with open("cars.txt")
+#### Opening of file called "cars.txt" in append mode. which means, I don't want to overwrite the file or create a new one if it does not exist. I just want to add new values to the existing file.
+with open("cars.txt", "a") as file:
+##### 
+
+   for RegNo, RegDate in car_reg_dict.items():
+      file.write(f"{RegNo}\t{RegDate}\n")
 
 
 
