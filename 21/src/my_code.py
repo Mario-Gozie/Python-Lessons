@@ -51,4 +51,4 @@ Max: 94.88
 """
 
 def get_Number():
-    
+    N = input("How many numbers: ")
