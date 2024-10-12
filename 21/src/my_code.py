@@ -74,7 +74,9 @@ def get_Number():
 
     with open("Numbers.txt","r") as file:
         numbers_Read = file.read()
-    print(f"Following numbers were read, and sorted, from file numbers.txt:\n{' '.join(map(str,random_decimal))}")
+        numbers_Read = list(map(float,numbers_Read.split()))
+        numbers_Read.sort()
+    print(f"Following numbers were read, and sorted, from file numbers.txt:\n{' '.join(map(str,numbers_Read))}")
     
 
 get_Number()
