@@ -51,4 +51,11 @@ Max: 94.88
 """
 
 def get_Number():
-    N = input("How many numbers: ")
+    # while True:
+        try:
+            N = int(input("How many numbers: "))
+        except ValueError:
+            print("Error!")
+            break
+
+get_Number()
