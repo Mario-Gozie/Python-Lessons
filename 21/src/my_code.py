@@ -69,8 +69,12 @@ def get_Number():
     #     random_decimal = random.randint(100, 10000) / 100
     #     random_decimals.append(random_decimal)
     with open("Numbers.txt","w") as file:
-        for line in file:
+            file.write(" ".join(map(str,random_decimal)))
     print(f"Following numbers were drawn, and written to file numbers.txt:\n{' '.join(map(str,random_decimal))}")
+
+    with open("Numbers.txt","r") as file:
+        numbers_Read = file.read()
+    print(f"Following numbers were read, and sorted, from file numbers.txt:\n{' '.join(map(str,random_decimal))}")
     
 
 get_Number()
