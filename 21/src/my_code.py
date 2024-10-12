@@ -49,13 +49,16 @@ Avg: 50.66
 Min: 14.45
 Max: 94.88
 """
+import random
 
 def get_Number():
-    # while True:
+    while True:
         try:
             N = int(input("How many numbers: "))
         except ValueError:
             print("Error!")
-            break
+        break
+    random_decimal = [random.randint(100, 10000) / 100 for _ in range(N)] #### Here, I am basically saying, create a random number, do it N times and put the values in a list. The code for a longer way is below, I believe it will explain better.
+    print(random_decimal)
 
 get_Number()
