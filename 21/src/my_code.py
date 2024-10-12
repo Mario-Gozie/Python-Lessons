@@ -59,6 +59,18 @@ def get_Number():
             print("Error!")
         break
     random_decimal = [random.randint(100, 10000) / 100 for _ in range(N)] #### Here, I am basically saying, create a random number, do it N times and put the values in a list. The code for a longer way is below, I believe it will explain better.
+
+    ### LONGER METHOD FOR THE RANDOM DECIMAL CODE ABOVE
+
+    # random_decimals = []
+
+    # # Generate 5 random decimal numbers using a traditional for loop
+    # for i in range(5):
+    #     random_decimal = random.randint(100, 10000) / 100
+    #     random_decimals.append(random_decimal)
+
+
+
     print(random_decimal)
 
 get_Number()
