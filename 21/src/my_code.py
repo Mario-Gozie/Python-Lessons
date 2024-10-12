@@ -68,9 +68,7 @@ def get_Number():
     # for i in range(5):
     #     random_decimal = random.randint(100, 10000) / 100
     #     random_decimals.append(random_decimal)
-
-
-
+    print(f"Following numbers were drawn, and written to file numbers.txt:\n"".join")
     print(random_decimal)
 
 get_Number()
