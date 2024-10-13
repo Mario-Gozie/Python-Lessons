@@ -34,6 +34,13 @@ Error!
 """
 
 def diagonal_name(name):
-      if len(name) > 18:
-    
+    if len(name) >= 18:
+      return
+    else:
+      for i in range(len(name)):
+        print(" " * (len(name)-i-1) + name[i])
         
+
+
+        
+diagonal_name("Chigo")
