@@ -51,6 +51,12 @@ Max: 94.88
 """
 import random
 
+##### FUNCTION TO CALCULATE PRIINT AND CALCULATE NUM, SUM, AVG, MIN, MAX
+
+def get_Descriptive_Statistics(NumValue, Array){
+     return f""
+}
+
 def get_Number():
     while True:
         try:
@@ -72,6 +78,8 @@ def get_Number():
             file.write(" ".join(map(str,random_decimal)))
     print(f"Following numbers were drawn, and written to file numbers.txt:\n{' '.join(map(str,random_decimal))}")
 
+
+### READING A TEXT FILE, SPLITING IT TO MAKE IT A LIST AND SORTING IT.
     with open("Numbers.txt","r") as file:
         numbers_Read = file.read()
         numbers_Read = list(map(float,numbers_Read.split()))
