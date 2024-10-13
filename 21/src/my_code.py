@@ -58,7 +58,7 @@ def get_Descriptive_Statistics(NumValue, Array):
      
     return f"In addition, the example generated, also, file results.txt, containing:\nNum: {NumValue}\nSum: {sum(Array)}\nAvg: {statistics.mean(Array)}\nMin: {min(Array)}\nMax: {max(Array)}"
 
-print(get_Descriptive_Statistics(5,[2,3,4,5,6,7,8]))
+
 
 # MAIN FUNCTION
 
@@ -92,6 +92,6 @@ def get_Number():
         numbers_Read.sort()
     print(f"Following numbers were read, and sorted, from file numbers.txt:\n{' '.join(map(str,numbers_Read))}")
     
-    print(get_Descriptive_Statistics())
+    print(get_Descriptive_Statistics(N,numbers_Read))
 
-# get_Number()
+get_Number()
