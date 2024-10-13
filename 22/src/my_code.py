@@ -32,3 +32,8 @@ Example with too long name:
 Give your name : This is my very long name
 Error!
 """
+
+def diagonal_name(name):
+      if len(name) > 18:
+    
+        
