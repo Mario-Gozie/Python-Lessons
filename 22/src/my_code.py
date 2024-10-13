@@ -33,14 +33,29 @@ Give your name : This is my very long name
 Error!
 """
 
+# def diagonal_name(name):
+#     if len(name) >= 18:
+#       return
+#     else:
+#       for i in range(len(name)):
+#         print(" " * i + name[len(name) - i - 1])
+
+
+# diagonal_name("Janne Koponen")
+
 def diagonal_name(name):
     if len(name) >= 18:
-      return
-    else:
-      for i in range(len(name)):
-        print(" " * (len(name)-i-1) + name[i])
-        
+        return  # Exit if the name is too long
 
+    # First part of the name (the first half)
+    for i in range(len(name) // 2 + 1):
+        print(" " * (len(name) // 2 - i) + name[i])
 
+    # Second part of the name (the second half)
+    for i in range(len(name) // 2 + 1, len(name)):
+        print(" " * (i - (len(name) // 2 + 1)) + name[i])
+
+# Example usage
+diagonal_name("Janne Koponen")
+  
         
-diagonal_name("Chigo")
