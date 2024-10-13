@@ -56,7 +56,9 @@ import statistics
 
 def get_Descriptive_Statistics(NumValue, Array):
      
-    return f"Num: {NumValue}\nSum: {sum(Array)}\nAvg: {statistics.mean(Array)}"
+    return f"Num: {NumValue}\nSum: {sum(Array)}\nAvg: {statistics.mean(Array)}\nMin: {min(Array)}\nMax: {max(Array)}"
+
+print(get_Descriptive_Statistics(5, [2,3,4,5,6,7]))
 
 
 def get_Number():
@@ -89,4 +91,4 @@ def get_Number():
     print(f"Following numbers were read, and sorted, from file numbers.txt:\n{' '.join(map(str,numbers_Read))}")
     
 
-get_Number()
+# get_Number()
