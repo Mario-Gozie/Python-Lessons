@@ -50,12 +50,14 @@ Min: 14.45
 Max: 94.88
 """
 import random
+import statistics
 
 ##### FUNCTION TO CALCULATE PRIINT AND CALCULATE NUM, SUM, AVG, MIN, MAX
 
-def get_Descriptive_Statistics(NumValue, Array){
-     return f""
-}
+def get_Descriptive_Statistics(NumValue, Array):
+     
+    return f"Num: {NumValue}\nSum: {sum(Array)}\nAvg: {statistics.mean(Array)}"
+
 
 def get_Number():
     while True:
