@@ -37,8 +37,8 @@ def diagonal_name(name):
     if len(name) >= 18:
       return
     else:
-      for i in range(len(name)):
-        print(" " * i + name[len(name) - i - 1])
+      for index, value in enumerate(name[::-1]):
+        print(f'" " * {(len(name) - 1 - index)}{value}"')
 
 
 diagonal_name("Janne Koponen")
