@@ -56,7 +56,7 @@ import statistics
 
 def get_Descriptive_Statistics(NumValue, Array):
      
-    return f"In addition, the example generated, also, file results.txt, containing:\nNum: {NumValue}\nSum: {sum(Array)}\nAvg: {statistics.mean(Array)}\nMin: {min(Array)}\nMax: {max(Array)}"
+    return f"In addition, the example generated, also, file results.txt, containing:\nNum: {NumValue}\nSum: {sum(Array):.2f}\nAvg: {statistics.mean(Array):.2f}\nMin: {min(Array)}\nMax: {max(Array)}"
 
 
 
