@@ -37,7 +37,7 @@ def diagonal_name(name):
     if len(name) >= 18:
       return
     else:
-      for index, value in enumerate(name[::-1]):
+      for index, value in enumerate(name[-1::-1]):
         print(f'{"  " * (len(name) - 1 - index)}{value}')
 
 
