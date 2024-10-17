@@ -28,7 +28,7 @@ Example:
 """
 #Write lambdas and laske here
 
-summation = #Insert your code here
+summation = lambda(x,y):#Insert your code here  
 multiplication = #Insert your code here
 
 def compute(f, numbers):
