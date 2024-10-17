@@ -32,6 +32,7 @@ summation = lambda x,y: x+y#Insert your code here
 multiplication = lambda x,y: x*y#Insert your code here
 
 print(summation(2,3))
+print(multiplication(2,3))
 
 def compute(f, numbers):
     
