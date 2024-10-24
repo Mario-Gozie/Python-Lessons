@@ -63,7 +63,7 @@ from datetime import datetime
 car_reg_dict = {}
 
 
-def ask_car():
+def ask_cars():
    while True:
       Registeration_number = input("Registeration number: ")
    
@@ -89,9 +89,9 @@ def ask_car():
 
 ###################### FUNCTION FOR WRITING CAR REGISTERATION DETAILS INTO A TEXT FILE
 
-def save_car(dict):
+def save_cars(dict):
    #### Opening of file called "cars.txt" in append mode "a" instead of write mode "w". which means, I don't want to overwrite the file or create a new one if it does not exist. I just want to add new values to the existing file.
-   with open("cars.txt", "a") as file:
+   with open("cars.txt", "w") as file:
    ## The with block here helps to close the file automatically when the with block ends.
 
 
@@ -125,7 +125,7 @@ def read_cars():
 ##### THE FUNCTION THAT PRINTS RESULT AFTER ALL THE ACTION
 
 def print_data(x):
-   save_car(x)
+   save_cars(x)
    car_fr_file = read_cars()
    print("In addition, the test program created cars.txt file containing:")
    for reg_no, date in car_fr_file.items():
@@ -135,6 +135,6 @@ def print_data(x):
 if __name__ == "__main__":
     #Write main program below this line
 
-   print_data(ask_car()) 
+   print_data(ask_cars()) 
 
 

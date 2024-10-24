@@ -9,6 +9,7 @@ Create a function named check, which gets arbitrary number of arguments:
 5) If the 1st parameter is not "teacher" nor "student" the function prints "I don't understand!"
 """
 #Write functions and define global variables here!
+### Send by Email
 
 def check(*agr):
     print(f"Number of arguments: {len(agr)}")
@@ -16,11 +17,11 @@ def check(*agr):
         print("Error!")
         return
     if agr[0] == "teacher":
-        print("Teaching Programming")
+        print("Teaching Programming!")
     elif agr[0] == "student":
-        print("Learining programming")
+        print("Learining programming!")
     else:
-        print("I don't understand")
+        print("I don't understand!")
 
 
 if __name__ == "__main__":

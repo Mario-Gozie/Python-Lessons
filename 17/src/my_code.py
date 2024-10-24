@@ -69,7 +69,7 @@ def input_int(msg):
 
 ################ FUNCTION FOR A LIST OF FAILED STUDENTS   ##################
 
-def print_failed(grades):
+def print_failed(grades):     #### let the function print names of students that failed.
     failed_students = []
     scores = []
     for key, value in grades.items():
