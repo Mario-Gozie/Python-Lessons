@@ -67,12 +67,15 @@ K_point = 90
 
 ########################## COMPUTATION FUNCTION     #################################
 
-def compute_total_ski_comp(length, style_list): ### rename names of function and parameters
+def compute_points(length, style_list): ### rename names of function and parameters
     style_points = 0
 
-    for x in style_list:
-        if x != max(style_list) and x != min(style_list):  #### this condition is a bit of issue. sort the remove first and last value
-            style_points += x
+    style_list.sort()
+
+    for x in range(1, len(style_list)-1):
+        
+        # if x != max(style_list) and x != min(style_list):  #### this condition is a bit of issue. sort the remove first and last value
+        style_points += x
     
     total_points = (length - K_point) * 1.8 + 60 + style_points
             
@@ -83,4 +86,4 @@ def compute_total_ski_comp(length, style_list): ### rename names of function and
 if __name__ == "__main__":
     #Write main program below this line
 
-    compute_total_ski_comp(length,style_points)    
+    compute_points(length,style_points)    
