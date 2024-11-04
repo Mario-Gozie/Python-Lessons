@@ -30,7 +30,31 @@ Sender +35844126783 messages:
 from datetime import datetime
 #Write class and imports here!
 
+# Define the SMSMessage class
+class SMSMessage:
+    def __init__(self, sender, receiver, send_time, message):
+        self.sender = sender
+        self.receiver = receiver
+        self.send_time = send_time
+        self.message = message
 
+    def __str__(self):
+        # Format the output as required by the example output
+        return f"{self.sender} {self.receiver} {self.send_time.strftime('%d.%m.%Y')} {self.message}"
+
+# Define the SMSUtils class with the required static methods
+class SMSUtils:
+    @staticmethod
+    def find_messages_dt(messages, dt):
+        # Filter messages sent on the specified date `dt`
+        return [msg for msg in messages if msg.send_time.date() == dt.date()]
+
+    @staticmethod
+    def find_messages_sender(messages, sender):
+        # Print messages sent by the specified `sender`
+        for msg in messages:
+            if msg.sender == sender:
+                print(msg)
 
 
 if __name__ == "__main__":
