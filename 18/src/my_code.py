@@ -46,44 +46,87 @@ Judge 5: 20
 
 ######################## LENGTH FUNCTION    #############################
 
-def ask_jump_length():
-    return float(input("Length: "))
+# def ask_jump_length():
+#     return float(input("Length: "))
 
-length = ask_jump_length()
+# length = ask_jump_length()
 
-#################### ASKING FOR STYLE POINTS #########################
+# #################### ASKING FOR STYLE POINTS #########################
 
-def ask_style_points():
-    style_point_list = []
-    for i in range(1,6):
-        style_point_list.append(float(input(f"Judge {i}: "))) ## APPENDING AND RETURNING VALUES COLLECTED TO STYLE POINT LIST
-    return style_point_list
+# def ask_style_points():
+#     style_point_list = []
+#     for i in range(1,6):
+#         style_point_list.append(float(input(f"Judge {i}: "))) ## APPENDING AND RETURNING VALUES COLLECTED TO STYLE POINT LIST
+#     return style_point_list
 
-style_points = ask_style_points()
-######################  K POINT VARIABLE     ########################################
+# style_points = ask_style_points()
+# ######################  K POINT VARIABLE     ########################################
 
-K_point = 90
+# K_point = 90
 
 
-########################## COMPUTATION FUNCTION     #################################
+# ########################## COMPUTATION FUNCTION     #################################
 
-def compute_points(length, style_list): ### rename names of function and parameters
-    style_points = 0
+# def compute_points(length, style_list): ### rename names of function and parameters
+#     style_points = 0
 
-    style_list.sort()
+#     style_list.sort()
 
-    for x in range(1, len(style_list)-1):
+#     for x in range(1, len(style_list)-1):
         
-        # if x != max(style_list) and x != min(style_list):  #### this condition is a bit of issue. sort the remove first and last value
-        style_points += x
+#         # if x != max(style_list) and x != min(style_list):  #### this condition is a bit of issue. sort the remove first and last value
+#         style_points += x
     
-    total_points = (length - K_point) * 1.8 + 60 + style_points
+#     total_points = (length - K_point) * 1.8 + 60 + style_points
             
-    print(length, total_points)   
+#     print(length, total_points)   
             
 
     
-if __name__ == "__main__":
-    #Write main program below this line
+# if __name__ == "__main__":
+#     #Write main program below this line
 
-    compute_points(length,style_points)    
+#     compute_points(length,style_points)    
+
+
+import sys
+import unittest
+import os
+import re
+
+def split(s):
+    return re.split('/|\\\\', s)
+
+pathlist=split(sys.argv[0])
+if len(pathlist)==1:
+    path='./'
+else:
+    path=pathlist[0]+'/'
+testpath=path+'tests'
+
+resultfile=testpath+'/result.txt'
+try:
+    os.remove(resultfile)
+except:
+    pass
+
+sys.path.insert(0, testpath)
+sys.path.insert(0, path+'src')
+sys.path.insert(0, path+'../helpers')
+
+from tests import *
+
+curr_file=os.path.abspath(_file_)
+exname = split(curr_file)[-2]
+
+print('Test', exname)
+
+unittest.main(verbosity=2, exit=False)
+
+outputfile=open(resultfile, 'wt')
+outputfile.write('{0}\t{1}'.format(completed(), started()))
+outputfile.close()
+if started()>completed():
+    print(started()-completed(), '/', started(), 'tests failed!')
+else:
+    print(completed(),'tests completed succesfully')

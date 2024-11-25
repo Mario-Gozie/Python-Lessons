@@ -19,3 +19,4 @@ pi = 3.141593
 diameter = int(input("Give diameter: "))
 print(f"Circumreference is {2 * pi * (diameter / 2):.2f}")
 print(f"Area is {pi * (diameter / 2) ** 2:.2f}")
+
