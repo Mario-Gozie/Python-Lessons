@@ -38,6 +38,84 @@ Stock value will be 404.95, and profit 44.95
 Portfolio value will be 11653.59
 """
 #Write class and imports here!
-    
+
+class Stock:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = max(0, price)  # Ensure price is > 0
+        self.quantity = max(0, quantity)  # Ensure quantity is > 0
+
+    def print_value(self, roi, years):
+        current_value = self.price * self.quantity
+        future_value = current_value * ((1 + roi / 100) ** years)
+        profit = future_value - current_value
+        print(f"{self.name} {self.quantity} {self.price:.1f}")
+        print(f"Stock value will be {future_value:.2f}, and profit {profit:.2f}")
+
+    @staticmethod
+    def compute_increase(roi, value):
+        return value * (roi / 100)
+
+# Main program
 if __name__ == "__main__":
-    #Write main program here
+    stocks = []
+
+    while True:
+        # Get stock data
+        name = input("Company name: ")
+        price = float(input("Price: "))
+        quantity = int(input("Amount: "))
+        stocks.append(Stock(name, price, quantity))
+
+        # Check if the user wants to add more stocks
+        more_stocks = input("More stocks (y/n)? ").strip().lower()
+        if more_stocks != 'y':
+            break
+
+    # Get investment parameters
+    roi = float(input("Expected ROI-%: "))
+    years = int(input("Years: "))
+
+    # Calculate and print stock and portfolio values
+    total_value = 0
+    for stock in stocks:
+        stock.print_value(roi, years)
+        current_value = stock.price * stock.quantity
+        total_value += current_value * ((1 + roi / 100) ** years)
+
+    print(f"\nPortfolio value will be {total_value:.2f}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# if __name__ == "__main__":
+#     #Write main program here

@@ -83,11 +83,12 @@ while True:
         print(radius)
     elif select == 2: 
         circumference = get_circumference(radius)
-        print(f"Circumference is {circumference: 2f}")     
+        print(f"Circumference is {circumference: 2f}")  
     elif select == 3:
         area = get_area(radius)
         print(f"Area is {area: 2f}")
     else:
          break
+    
 
 
