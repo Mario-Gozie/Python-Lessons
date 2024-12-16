@@ -44,6 +44,8 @@
 # diagonal_name("Janne Koponen")
 
 
+
+
         
 def diagonal_name(name):
     # Check if the name length exceeds 18 characters

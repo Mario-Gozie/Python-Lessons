@@ -49,49 +49,70 @@ Avg: 50.66
 Min: 14.45
 Max: 94.88
 """
+
 import random
-import statistics
 
-##### FUNCTION TO CALCULATE PRIINT AND CALCULATE NUM, SUM, AVG, MIN, MAX
-
-def get_Descriptive_Statistics(NumValue, Array):
-     
-    return f"In addition, the example generated, also, file results.txt, containing:\nNum: {NumValue}\nSum: {sum(Array):.2f}\nAvg: {statistics.mean(Array):.2f}\nMin: {min(Array)}\nMax: {max(Array)}"
-
-
-
-# MAIN FUNCTION
-
-
-def get_Number():
-    while True:
-        try:
-            N = int(input("How many numbers: "))
-        except ValueError:
+def main():
+    # 1) Ask number of numbers to draw
+    try:
+        N = int(input("How many numbers? "))
+        
+        # Check if N is less than 1
+        if N < 1:
             print("Error!")
-        break
-    random_decimal = [random.randint(100, 10000) / 100 for _ in range(N)] #### Here, I am basically saying, create a random number, do it N times and put the values in a list. The code for a longer way is below, I believe it will explain better.
+            return
+    except ValueError:
+        print("Error!")
+        return
 
-    ### LONGER METHOD FOR THE RANDOM DECIMAL CODE ABOVE
+    # Draw N numbers
+    numbers = []
+    for _ in range(N):
+        # Use the specified method to draw random decimal
+        random_decimal = random.randint(100, 10000) / 100
+        numbers.append(random_decimal)
 
-    # random_decimals = []
+    # 2) Show drawn numbers
+    print("Following numbers were drawn, and written to file numbers.txt:")
+    print(" ".join(f"{num:.2f}" for num in numbers))
 
-    # # Generate 5 random decimal numbers using a traditional for loop
-    # for i in range(5):
-    #     random_decimal = random.randint(100, 10000) / 100
-    #     random_decimals.append(random_decimal)
-    with open("Numbers.txt","w") as file:
-            file.write(" ".join(map(str,random_decimal)))
-    print(f"Following numbers were drawn, and written to file numbers.txt:\n{' '.join(map(str,random_decimal))}")
+    # 3) Save numbers to file
+    with open("numbers.txt", "w") as f:
+        for num in numbers:
+            f.write(f"{num:.2f}\n")
+
+    # 4) Read and sort numbers
+    with open("numbers.txt", "r") as f:
+        sorted_numbers = sorted(float(line.strip()) for line in f)
+
+    # 5) Print sorted numbers
+    print("Following numbers were read, and sorted, from file numbers.txt:")
+    print(" ".join(f"{num:.2f}" for num in sorted_numbers))
+
+    # 6) Calculate statistics and write to results.txt
+    num_count = len(sorted_numbers)
+    total_sum = sum(sorted_numbers)
+    average = total_sum / num_count
+    min_val = min(sorted_numbers)
+    max_val = max(sorted_numbers)
+
+    # Write results to file
+    with open("results.txt", "w") as f:
+        f.write(f"Num: {num_count}\n")
+        f.write(f"Sum: {total_sum:.2f}\n")
+        f.write(f"Avg: {average:.2f}\n")
+        f.write(f"Min: {min_val:.2f}\n")
+        f.write(f"Max: {max_val:.2f}\n")
+
+    # Print results
+    print("\nAnd finally at file results.txt we have:")
+    print(f"Num: {num_count}")
+    print(f"Sum: {total_sum:.2f}")
+    print(f"Avg: {average:.2f}")
+    print(f"Min: {min_val:.2f}")
+    print(f"Max: {max_val:.2f}")
+
+if __name__ == "__main__":
+    main()
 
 
-### READING A TEXT FILE, SPLITING IT TO MAKE IT A LIST AND SORTING IT.
-    with open("Numbers.txt","r") as file:
-        numbers_Read = file.read()
-        numbers_Read = list(map(float,numbers_Read.split()))
-        numbers_Read.sort()
-    print(f"Following numbers were read, and sorted, from file numbers.txt:\n{' '.join(map(str,numbers_Read))}")
-    
-    print(get_Descriptive_Statistics(N,numbers_Read))
-
-get_Number()

@@ -43,90 +43,43 @@ Judge 5: 20
 65.0 22.5
 """
 #Write functions and define global variables here!
+# Global variable for K-point of the hill
+K_point = 90
 
-######################## LENGTH FUNCTION    #############################
+def ask_jump_length():
+    while True:
+        try:
+            length = float(input("Jump length (resolution 0.5m): "))
+            if length % 0.5 == 0:
+                return length
+            else:
+                print("Please enter a length with resolution 0.5m.")
+        except ValueError:
+            print("Please enter a valid number.")
 
-# def ask_jump_length():
-#     return float(input("Length: "))
+def ask_style_points():
+    style_points = []
+    for i in range(5):
+        while True:
+            try:
+                point = float(input(f"Judge {i+1} style point (0-20, resolution 0.5): "))
+                if 0 <= point <= 20 and point % 0.5 == 0:
+                    style_points.append(point)
+                    break
+                else:
+                    print("Please enter a point between 0 and 20, with resolution 0.5.")
+            except ValueError:
+                print("Please enter a valid number.")
+    return style_points
 
-# length = ask_jump_length()
+def compute_points(length, all_style_points_list):
+    sorted_points = sorted(all_style_points_list)
+    style_points = sum(sorted_points[1:4])  # Ignore the highest and lowest points
+    total_points = (length - K_point) * 1.8 + 60 + style_points
+    return total_points
 
-# #################### ASKING FOR STYLE POINTS #########################
-
-# def ask_style_points():
-#     style_point_list = []
-#     for i in range(1,6):
-#         style_point_list.append(float(input(f"Judge {i}: "))) ## APPENDING AND RETURNING VALUES COLLECTED TO STYLE POINT LIST
-#     return style_point_list
-
-# style_points = ask_style_points()
-# ######################  K POINT VARIABLE     ########################################
-
-# K_point = 90
-
-
-# ########################## COMPUTATION FUNCTION     #################################
-
-# def compute_points(length, style_list): ### rename names of function and parameters
-#     style_points = 0
-
-#     style_list.sort()
-
-#     for x in range(1, len(style_list)-1):
-        
-#         # if x != max(style_list) and x != min(style_list):  #### this condition is a bit of issue. sort the remove first and last value
-#         style_points += x
-    
-#     total_points = (length - K_point) * 1.8 + 60 + style_points
-            
-#     print(length, total_points)   
-            
-
-    
-# if __name__ == "__main__":
-#     #Write main program below this line
-
-#     compute_points(length,style_points)    
-
-
-import sys
-import unittest
-import os
-import re
-
-def split(s):
-    return re.split('/|\\\\', s)
-
-pathlist=split(sys.argv[0])
-if len(pathlist)==1:
-    path='./'
-else:
-    path=pathlist[0]+'/'
-testpath=path+'tests'
-
-resultfile=testpath+'/result.txt'
-try:
-    os.remove(resultfile)
-except:
-    pass
-
-sys.path.insert(0, testpath)
-sys.path.insert(0, path+'src')
-sys.path.insert(0, path+'../helpers')
-
-from tests import *
-
-curr_file=os.path.abspath(_file_)
-exname = split(curr_file)[-2]
-
-print('Test', exname)
-
-unittest.main(verbosity=2, exit=False)
-
-outputfile=open(resultfile, 'wt')
-outputfile.write('{0}\t{1}'.format(completed(), started()))
-outputfile.close()
-if started()>completed():
-    print(started()-completed(), '/', started(), 'tests failed!')
-else:
-    print(completed(),'tests completed succesfully')
+if __name__ == "__main__":
+    length = ask_jump_length()
+    style_points = ask_style_points()
+    total_points = compute_points(length, style_points)
+    print(f"{length} {total_points}")

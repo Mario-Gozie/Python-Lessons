@@ -57,95 +57,79 @@ Matti 0
 #Call this  function to read integer from the user
 #Reads an integer from the keyboard and shows msg.
 #If given string is not valid integer a new one will be asked
-def input_int(msg):
+
+
+
+def input_integer(msg):
+    """
+    Prompts the user for an integer repeatedly until a valid input is provided.
+
+    Args:
+        msg: The prompt message to display to the user.
+
+    Returns:
+        The integer entered by the user.
+    """
     while True:
         try:
             return int(input(msg))
-        except:
-            pass
-
-
-#Write your functions here!
-
-################ FUNCTION FOR A LIST OF FAILED STUDENTS   ##################
-
-def print_failed(grades):     #### let the function print names of students that failed.
-    failed_students = []
-    scores = []
-    for key, value in grades.items():
-        if value == 0:
-            failed_students.append(key)
-            scores.append(value)
-
-    failed_result = []
-    for failed_student, score in zip(failed_students, scores):
-        failed_result.append(f"{failed_student} {score}")
-    
-    return '\n'.join(failed_result)
-
-#######################  FUNCTION FOR COUNTING NUMBER OF FAILED STUDENTS    #######################
-
-def failed_count(grades):
-    count = 0
-    for key, value in grades.items():
-        if value == 0:
-            count += 1
-    return count
-
-
-
-# def failed_count(grades):
-#     count = 0
-#     for key, value in grades.items():
-#         if value == 0:
-#             count+=1
-#     return f"There are {count}  failed students."
-
-################   FUNCTION FOR NAME AND GRADE COLLECTION    ######################
+        except ValueError:
+            print("Please enter a valid integer.")
 
 def ask_grades():
-    Name_and_grade = {}
-    while True:
-        Name = input("Name: ")
-        if Name.upper() == "END":
-            break
-        else:
-            grade = input_int("Grade: ")
-            if grade < 0:
-                grade = 0
-            elif grade > 5:
-                grade = 5
-            else:
-                grade = grade
-            Name_and_grade[Name] = grade
-    return Name_and_grade
+    """
+    Prompts the user to enter student names and grades.
 
-########################  FUNTION TO PRINT ALL STUDENTS    ##############################
+    Returns:
+        A dictionary containing student names as keys and their corresponding grades as values.
+    """
+    grades = {}
+    while True:
+        name = input("Name: ")
+        if name == "END":
+            break
+        grade = input_integer("Grade: ")
+        grade = max(0, min(grade, 5))  # Clamp grade to 0-5
+        grades[name] = grade
+    return grades
+
+def failed_count(grades):
+    """
+    Counts the number of students who failed (grade 0).
+
+    Args:
+        grades: A dictionary of student names and their grades.
+
+    Returns:
+        The number of failed students.
+    """
+    return sum(1 for grade in grades.values() if grade == 0)
+
+def print_failed(grades):
+    """
+    Prints the names and grades of failed students.
+
+    Args:
+        grades: A dictionary of student names and their grades.
+    """
+    print(f"There are {failed_count(grades)} failed students.")
+    for name, grade in grades.items():
+        if grade == 0:
+            print(name, grade)
 
 def print_grades(grades):
-    # Get the count of failed students
-    failed_students_count = failed_count(grades)
-    
-    if failed_students_count > 0:
-        
-        return f"There are {failed_students_count} failed students.\n{print_failed(grades)}"
+    """
+    Prints the names and grades of all students.
 
-        # print(f"There are {failed_students_count}  failed students.") 
-        # print(print_failed(grades))
-    
-    else:
-        # Print all students with their grades
-        for Names, Grades in grades.items():
-            return f"{Names} {Grades}"
-           
-
-grades = print_grades(ask_grades())
-
-
-
-###### ALL CODES HERE WORK. YOU JUST NEED TO UNDERSTAND AND FIX A SITUATION WHERE YOU HAVE TO AVOID ERROR FOR INVALID INPUTS #######
+    Args:
+        grades: A dictionary of student names and their grades.
+    """
+    for name, grade in grades.items():
+        print(name, grade)
 
 if __name__ == "__main__":
-    print(grades)
-    # print_grades(ask_grades())
-    #Write main program below this line
+    grades = ask_grades()
+    if failed_count(grades) > 0:
+        print_failed(grades)
+    else:
+        print_grades(grades)
